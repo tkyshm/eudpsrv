@@ -24,6 +24,19 @@ rel: compile
 	mkdir -p rel
 	(cd rel && rebar generate)
 
+backup-rel:
+	rm -rf old_rel
+	mv rel old_rel
+
+new-rel:
+	(rm -rf rel && mkdir -p rel)
+	(cd rel && rebar -C $(REBAR_CONFIG) create-node nodeid=eudpsv)
+	(sed -i -e "s/lib_dirs, \[\]/lib_dirs, \[\"..\/deps\"\]/g" rel/reltool.config)
+	(sed -i -e "s/include}/include},{lib_dir, \"..\"}/" rel/reltool.config)
+	(sed -i -e "3i \% start lager application " rel/files/vm.args)
+	(sed -i -e "4i -s lager" rel/files/vm.args)
+	(cd rel && rebar generate)
+
 test:
 	rm -rf .eunit
 	@rebar -C $(REBAR_CONFIG) eunit skip_deps=true

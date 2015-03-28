@@ -4,7 +4,7 @@
 
 ## Create a release package 
 ```
- make all
+ make get-deps compile new-rel
 ```
 
 ## Start server by console mode

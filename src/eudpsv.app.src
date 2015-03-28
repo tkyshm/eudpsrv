@@ -7,8 +7,7 @@
                   kernel,
                   stdlib,
                   sasl,
-                  lager,
-                  reloader
+                  lager
                  ]},
   {mod, { eudpsv_app, []}},
   {env, [
