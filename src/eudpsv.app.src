@@ -1,0 +1,38 @@
+{application, eudpsv,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  sasl,
+                  lager,
+                  reloader
+                 ]},
+  {mod, { eudpsv_app, []}},
+  {env, [
+         {udp_conf, [
+                     {port, 8888}
+                    ]
+         },
+         {lager, 
+          [
+           {handlers, 
+            [
+             {colored, true},
+             {lager_console_backend, [info, {lager_default_formatter, [time,color," [",severity,"] ", message, "\n"]}]},
+             {lager_file_backend, [{file, "error.log"}, {level, error}, {formatter, lager_default_formatter},
+                                   {formatter_config, [date, " ", time," [",severity,"] ",pid, " ", message, "\n"]}]},
+             {lager_file_backend, [{file, "console.log"}, {level, info}]}
+             %{lager_console_backend, [info, {lager_default_formatter, [time, color, " [",severity,"] ", message, "\n"]}]},
+             %{lager_file_backend, [{file, "log/error.log"}, {level, error}, {formatter, lager_default_formatter},
+             %                      {formatter_config, [date, " ", time," [",severity,"] ",pid, " ", message, "\n"]}]},
+            ]
+           }
+          ]
+         }
+        ]
+  }
+ ]
+}.

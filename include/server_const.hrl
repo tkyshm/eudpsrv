@@ -1,0 +1,2 @@
+-define(PORT,9777).
+-define(SOCKET_NUM,1).

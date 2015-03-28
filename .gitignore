@@ -1,0 +1,7 @@
+~
+*.swp
+/ebin/
+/.git_tmp/
+/deps/
+/rel/
+/ebin/
