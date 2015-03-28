@@ -1,13 +1,18 @@
-# Echo Server on UDP (for practice OTP app)
-## Requirement
+# Echo Server on UDP
+## Requirements
 * erlang 17.3
 
-## Compile 
+## Create a release package 
 ```
  make all
 ```
 
-### Start server by console mode
+## Start server by console mode
 ```
  ./console_rel.sh
+```
+
+## Test echo
+```
+ echo "Hello World!" | nc -u 127.0.0.1 -P 8888
 ```
