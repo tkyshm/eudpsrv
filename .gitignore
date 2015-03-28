@@ -1,5 +1,6 @@
 ~
 *.swp
+*.swo
 /ebin/
 /.git_tmp/
 /deps/
